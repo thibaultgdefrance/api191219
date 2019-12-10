@@ -16,7 +16,7 @@ namespace ApiChat3.Controllers
 {
     public class DiscussionsController : ApiController
     {
-        private Chat2Entities db = new Chat2Entities();
+        private Chat2Entities1 db = new Chat2Entities1();
         Worflow worflow = new Worflow();
         // GET: api/Discussions
         public IQueryable<Discussion> GetDiscussion()
@@ -156,14 +156,22 @@ namespace ApiChat3.Controllers
 
         public List<Discussion> GetDiscussionUtilisateur(string token)
         {
-            
-            Utilisateur utilisateur = (from u in db.Utilisateur where u.TokenUtilisateur == token select u).First();
-            //int idUtilisateur = Convert.ToInt32(token);
-            List<Discussion> discussionsUtilisateur = (from d in db.Discussion join u in db.UtilisateurDiscussion on d.IdDiscussion equals u.IdDiscussion where u.IdUtilisateur==utilisateur.IdUtilisateur select d).ToList();
-            //List<Discussion> discussionsUtilisateur = (from d in db.Discussion select d).ToList();
+            try
+            {
+                Utilisateur utilisateur = (from u in db.Utilisateur where u.TokenUtilisateur == token select u).First();
+                //int idUtilisateur = Convert.ToInt32(token);
+                List<Discussion> discussionsUtilisateur = (from d in db.Discussion join u in db.UtilisateurDiscussion on d.IdDiscussion equals u.IdDiscussion where u.IdUtilisateur == utilisateur.IdUtilisateur select d).ToList();
+                //List<Discussion> discussionsUtilisateur = (from d in db.Discussion select d).ToList();
 
-            //var result = JsonConvert.SerializeObject(discussionsUtilisateur);
-            return discussionsUtilisateur;
+                //var result = JsonConvert.SerializeObject(discussionsUtilisateur);
+                return discussionsUtilisateur;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            
         }
     }
 }

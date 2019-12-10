@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Chat2Model1StoreContainer" CdmEntityContainer="Chat2Entities1">
+    <EntitySetMapping Name="Acces">
+      <EntityTypeMapping TypeName="Chat2Model1.Acces">
+        <MappingFragment StoreEntitySet="Acces">
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="LibelleAcces" ColumnName="LibelleAcces" />
+          <ScalarProperty Name="ValeurAcces" ColumnName="ValeurAcces" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avatar">
+      <EntityTypeMapping TypeName="Chat2Model1.Avatar">
+        <MappingFragment StoreEntitySet="Avatar">
+          <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
+          <ScalarProperty Name="CheminAvatar" ColumnName="CheminAvatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discussion">
+      <EntityTypeMapping TypeName="Chat2Model1.Discussion">
+        <MappingFragment StoreEntitySet="Discussion">
+          <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
+          <ScalarProperty Name="TitreDiscussion" ColumnName="TitreDiscussion" />
+          <ScalarProperty Name="DateCreationDiscussion" ColumnName="DateCreationDiscussion" />
+          <ScalarProperty Name="DescriptionDiscussion" ColumnName="DescriptionDiscussion" />
+          <ScalarProperty Name="StatutDiscussion" ColumnName="StatutDiscussion" />
+          <ScalarProperty Name="IdTypeDiscussion" ColumnName="IdTypeDiscussion" />
+          <ScalarProperty Name="IdStatutDiscussion" ColumnName="IdStatutDiscussion" />
+          <ScalarProperty Name="TokenDiscussion" ColumnName="TokenDiscussion" />
+          <ScalarProperty Name="IdCreateur" ColumnName="IdCreateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Image">
+      <EntityTypeMapping TypeName="Chat2Model1.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+          <ScalarProperty Name="NomImage" ColumnName="NomImage" />
+          <ScalarProperty Name="CheminImage" ColumnName="CheminImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maintenance">
+      <EntityTypeMapping TypeName="Chat2Model1.Maintenance">
+        <MappingFragment StoreEntitySet="Maintenance">
+          <ScalarProperty Name="IdMaintenance" ColumnName="IdMaintenance" />
+          <ScalarProperty Name="DescriptionMaintenance" ColumnName="DescriptionMaintenance" />
+          <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="Chat2Model1.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
+          <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+          <ScalarProperty Name="DateEnvoi" ColumnName="DateEnvoi" />
+          <ScalarProperty Name="TexteMessage" ColumnName="TexteMessage" />
+          <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
+          <ScalarProperty Name="IdTon" ColumnName="IdTon" />
+          <ScalarProperty Name="StatutMessage" ColumnName="StatutMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Niveau">
+      <EntityTypeMapping TypeName="Chat2Model1.Niveau">
+        <MappingFragment StoreEntitySet="Niveau">
+          <ScalarProperty Name="IdNiveau" ColumnName="IdNiveau" />
+          <ScalarProperty Name="LibelleNiveau" ColumnName="LibelleNiveau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notification">
+      <EntityTypeMapping TypeName="Chat2Model1.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
+          <ScalarProperty Name="TexteNotification" ColumnName="TexteNotification" />
+          <ScalarProperty Name="StatutNotification" ColumnName="StatutNotification" />
+          <ScalarProperty Name="IdCreateur" ColumnName="IdCreateur" />
+          <ScalarProperty Name="IdDestinataire" ColumnName="IdDestinataire" />
+          <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
+          <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatutDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model1.StatutDiscussion">
+        <MappingFragment StoreEntitySet="StatutDiscussion">
+          <ScalarProperty Name="IdStatutDiscussion" ColumnName="IdStatutDiscussion" />
+          <ScalarProperty Name="LibelleStatutDiscussion" ColumnName="LibelleStatutDiscussion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatutUtilisateur">
+      <EntityTypeMapping TypeName="Chat2Model1.StatutUtilisateur">
+        <MappingFragment StoreEntitySet="StatutUtilisateur">
+          <ScalarProperty Name="IdStatutUtilisateur" ColumnName="IdStatutUtilisateur" />
+          <ScalarProperty Name="LibelleStatutUtilisateur" ColumnName="LibelleStatutUtilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ton">
+      <EntityTypeMapping TypeName="Chat2Model1.Ton">
+        <MappingFragment StoreEntitySet="Ton">
+          <ScalarProperty Name="IdTon" ColumnName="IdTon" />
+          <ScalarProperty Name="LibelleTon" ColumnName="LibelleTon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model1.TypeDiscussion">
+        <MappingFragment StoreEntitySet="TypeDiscussion">
+          <ScalarProperty Name="IdTypeDiscussion" ColumnName="IdTypeDiscussion" />
+          <ScalarProperty Name="LibelleTypeDiscussion" ColumnName="LibelleTypeDiscussion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeNotification">
+      <EntityTypeMapping TypeName="Chat2Model1.TypeNotification">
+        <MappingFragment StoreEntitySet="TypeNotification">
+          <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
+          <ScalarProperty Name="LibelleTypeNotification" ColumnName="LibelleTypeNotification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="Chat2Model1.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+          <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
+          <ScalarProperty Name="PrenomUtilisateur" ColumnName="PrenomUtilisateur" />
+          <ScalarProperty Name="PseudoUtilisateur" ColumnName="PseudoUtilisateur" />
+          <ScalarProperty Name="EmailUtilisateur" ColumnName="EmailUtilisateur" />
+          <ScalarProperty Name="DateDeNaissanceUtilisateur" ColumnName="DateDeNaissanceUtilisateur" />
+          <ScalarProperty Name="NumeroUtilisateur" ColumnName="NumeroUtilisateur" />
+          <ScalarProperty Name="MotDePasseUtilisateur" ColumnName="MotDePasseUtilisateur" />
+          <ScalarProperty Name="DateCreationUtilisateur" ColumnName="DateCreationUtilisateur" />
+          <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
+          <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
+          <ScalarProperty Name="IdStatutUtilisateur" ColumnName="IdStatutUtilisateur" />
+          <ScalarProperty Name="TokenUtilisateur" ColumnName="TokenUtilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UtilisateurDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model1.UtilisateurDiscussion">
+        <MappingFragment StoreEntitySet="UtilisateurDiscussion">
+          <ScalarProperty Name="IdUtilisateurDiscussion" ColumnName="IdUtilisateurDiscussion" />
+          <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+          <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
+          <ScalarProperty Name="IdNiveau" ColumnName="IdNiveau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

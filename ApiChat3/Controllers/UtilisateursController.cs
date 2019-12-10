@@ -15,7 +15,7 @@ namespace ApiChat3.Controllers
 {
     public class UtilisateursController : ApiController
     {
-        private Chat2Entities db = new Chat2Entities();
+        private Chat2Entities1 db = new Chat2Entities1();
 
         // GET: api/Utilisateurs
         public IQueryable<Utilisateur> GetUtilisateur()
@@ -114,6 +114,27 @@ namespace ApiChat3.Controllers
         private bool UtilisateurExists(int id)
         {
             return db.Utilisateur.Count(e => e.IdUtilisateur == id) > 0;
+        }
+
+
+        public List<Participant> getDiscussionParticipant(string tokenDiscussion, string tokenUtilisateur)
+        {
+            Discussion discussion = (from d in db.Discussion where d.TokenDiscussion == tokenDiscussion select d).First();
+            List<Utilisateur> utilisateurs = (from u in db.Utilisateur join ud in db.UtilisateurDiscussion on u.IdUtilisateur equals ud.IdUtilisateur where ud.IdDiscussion == discussion.IdDiscussion select u).ToList(); ;
+            List<Participant> participants = new List<Participant>();
+            foreach (var item in utilisateurs)
+            {
+                Participant participant = new Participant();
+                participant.NomUtilisateur = item.NomUtilisateur;
+                participant.PrenomUtilisateur = item.PrenomUtilisateur;
+                participant.PseudoUtilisateur = item.PseudoUtilisateur;
+                participant.EmailUtilisateur = item.EmailUtilisateur;
+                participant.IdAcces = item.IdAcces;
+                participant.IdAvatar = item.IdAvatar;
+                participants.Add(participant);
+                
+            }
+            return participants;
         }
     }
 }

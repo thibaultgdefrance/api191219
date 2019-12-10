@@ -16,5 +16,7 @@ namespace ApiChat3.Models
         public int IdTon { get; set; }
         public byte StatutMessage { get; set; }
         public string PseudoUtilisateur { get; set; }
+        public string TitreDiscussion { get; set; }
+        public bool VerifMessage { get; set; } 
     }
 }

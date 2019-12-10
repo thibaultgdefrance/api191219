@@ -31,7 +31,6 @@ namespace ApiChat3.Models
         public int IdStatutDiscussion { get; set; }
         public string TokenDiscussion { get; set; }
         public Nullable<int> IdCreateur { get; set; }
-        
         [JsonIgnore]
         public virtual Utilisateur Utilisateur { get; set; }
         [JsonIgnore]

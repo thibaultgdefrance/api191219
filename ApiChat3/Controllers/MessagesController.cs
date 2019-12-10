@@ -15,7 +15,7 @@ namespace ApiChat3.Controllers
 {
     public class MessagesController : ApiController
     {
-        private Chat2Entities db = new Chat2Entities();
+        private Chat2Entities1 db = new Chat2Entities1();
 
         // GET: api/Messages
         public IQueryable<Message> GetMessage()
@@ -140,7 +140,7 @@ namespace ApiChat3.Controllers
             return db.Message.Count(e => e.IdMessage == id) > 0;
         }
 
-        public List<MessageUtilisateur> getMessagesDiscussion(string tokenDiscussion)
+        public List<MessageUtilisateur> getMessagesDiscussion(string tokenDiscussion,string tokenUtilisateur)
         {
             try
             {
@@ -151,6 +151,7 @@ namespace ApiChat3.Controllers
                 foreach (var item in messages)
                 {
                     Utilisateur utilisateur = (from u in db.Utilisateur where u.IdUtilisateur == item.IdUtilisateur select u).First();
+                    Utilisateur utilisateur2 = (from u in db.Utilisateur where u.TokenUtilisateur == tokenUtilisateur select u).First();
                     MessageUtilisateur messageUtilisateur = new MessageUtilisateur();
                     messageUtilisateur.PseudoUtilisateur = utilisateur.PseudoUtilisateur;
                     messageUtilisateur.IdMessage = item.IdMessage;
@@ -159,9 +160,18 @@ namespace ApiChat3.Controllers
                     messageUtilisateur.DateEnvoi = item.DateEnvoi;
                     messageUtilisateur.TexteMessage = item.TexteMessage;
                     messageUtilisateur.IdDiscussion = item.IdDiscussion;
-
+                    if (messageUtilisateur.IdUtilisateur==utilisateur2.IdUtilisateur)
+                    {
+                        messageUtilisateur.VerifMessage = true;
+                    }
+                    else
+                    {
+                        messageUtilisateur.VerifMessage = false;
+                    }
                     messageUtilisateur.StatutMessage = item.StatutMessage;
+                    messageUtilisateur.TitreDiscussion = discussion.TitreDiscussion;
                     messagesUtilisateur.Add(messageUtilisateur);
+                    
                 }
                 return messagesUtilisateur;
             }
@@ -173,5 +183,6 @@ namespace ApiChat3.Controllers
             
             
         }
+        
     }
 }

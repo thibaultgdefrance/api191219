@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Chat2Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Acces">
+    <Key>
+      <PropertyRef Name="IdAcces" />
+    </Key>
+    <Property Name="IdAcces" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleAcces" Type="varchar(max)" Nullable="false" />
+    <Property Name="ValeurAcces" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Avatar">
+    <Key>
+      <PropertyRef Name="IdAvatar" />
+    </Key>
+    <Property Name="IdAvatar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CheminAvatar" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Discussion">
+    <Key>
+      <PropertyRef Name="IdDiscussion" />
+    </Key>
+    <Property Name="IdDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitreDiscussion" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="DateCreationDiscussion" Type="datetime" Nullable="false" />
+    <Property Name="DescriptionDiscussion" Type="text" />
+    <Property Name="StatutDiscussion" Type="tinyint" />
+    <Property Name="IdTypeDiscussion" Type="int" Nullable="false" />
+    <Property Name="IdStatutDiscussion" Type="int" Nullable="false" />
+    <Property Name="TokenDiscussion" Type="varchar(max)" />
+    <Property Name="IdCreateur" Type="int" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="IdImage" />
+    </Key>
+    <Property Name="IdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="CheminImage" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maintenance">
+    <Key>
+      <PropertyRef Name="IdMaintenance" />
+    </Key>
+    <Property Name="IdMaintenance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescriptionMaintenance" Type="text" />
+    <Property Name="IdUtilisateur" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="IdMessage" />
+    </Key>
+    <Property Name="IdMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUtilisateur" Type="int" Nullable="false" />
+    <Property Name="DateEnvoi" Type="datetime" Nullable="false" />
+    <Property Name="TexteMessage" Type="text" />
+    <Property Name="IdDiscussion" Type="int" Nullable="false" />
+    <Property Name="IdTon" Type="int" Nullable="false" />
+    <Property Name="StatutMessage" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Niveau">
+    <Key>
+      <PropertyRef Name="IdNiveau" />
+    </Key>
+    <Property Name="IdNiveau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleNiveau" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="IdNotification" />
+    </Key>
+    <Property Name="IdNotification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TexteNotification" Type="text" />
+    <Property Name="StatutNotification" Type="tinyint" Nullable="false" />
+    <Property Name="IdCreateur" Type="int" Nullable="false" />
+    <Property Name="IdDestinataire" Type="int" Nullable="false" />
+    <Property Name="IdDiscussion" Type="int" />
+    <Property Name="IdTypeNotification" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatutDiscussion">
+    <Key>
+      <PropertyRef Name="IdStatutDiscussion" />
+    </Key>
+    <Property Name="IdStatutDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleStatutDiscussion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StatutUtilisateur">
+    <Key>
+      <PropertyRef Name="IdStatutUtilisateur" />
+    </Key>
+    <Property Name="IdStatutUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleStatutUtilisateur" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Ton">
+    <Key>
+      <PropertyRef Name="IdTon" />
+    </Key>
+    <Property Name="IdTon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleTon" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TypeDiscussion">
+    <Key>
+      <PropertyRef Name="IdTypeDiscussion" />
+    </Key>
+    <Property Name="IdTypeDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleTypeDiscussion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TypeNotification">
+    <Key>
+      <PropertyRef Name="IdTypeNotification" />
+    </Key>
+    <Property Name="IdTypeNotification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LibelleTypeNotification" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="IdUtilisateur" />
+    </Key>
+    <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomUtilisateur" Type="varchar(max)" Nullable="false" />
+    <Property Name="PrenomUtilisateur" Type="varchar(max)" Nullable="false" />
+    <Property Name="PseudoUtilisateur" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmailUtilisateur" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateDeNaissanceUtilisateur" Type="date" Nullable="false" />
+    <Property Name="NumeroUtilisateur" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MotDePasseUtilisateur" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateCreationUtilisateur" Type="datetime" Nullable="false" />
+    <Property Name="IdAvatar" Type="int" />
+    <Property Name="IdAcces" Type="int" Nullable="false" />
+    <Property Name="IdStatutUtilisateur" Type="int" />
+    <Property Name="TokenUtilisateur" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="UtilisateurDiscussion">
+    <Key>
+      <PropertyRef Name="IdUtilisateurDiscussion" />
+    </Key>
+    <Property Name="IdUtilisateurDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUtilisateur" Type="int" Nullable="false" />
+    <Property Name="IdDiscussion" Type="int" Nullable="false" />
+    <Property Name="IdNiveau" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Discussio__IdCre__656C112C">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="Discussion">
+        <PropertyRef Name="IdCreateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Discussio__IdSta__66603565">
+    <End Role="StatutDiscussion" Type="Self.StatutDiscussion" Multiplicity="1" />
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatutDiscussion">
+        <PropertyRef Name="IdStatutDiscussion" />
+      </Principal>
+      <Dependent Role="Discussion">
+        <PropertyRef Name="IdStatutDiscussion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Discussio__IdTyp__6754599E">
+    <End Role="TypeDiscussion" Type="Self.TypeDiscussion" Multiplicity="1" />
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeDiscussion">
+        <PropertyRef Name="IdTypeDiscussion" />
+      </Principal>
+      <Dependent Role="Discussion">
+        <PropertyRef Name="IdTypeDiscussion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Maintenan__IdUti__68487DD7">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="Maintenance">
+        <PropertyRef Name="IdUtilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__IdDiscu__693CA210">
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discussion">
+        <PropertyRef Name="IdDiscussion" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="IdDiscussion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__IdTon__6A30C649">
+    <End Role="Ton" Type="Self.Ton" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ton">
+        <PropertyRef Name="IdTon" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="IdTon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__IdUtili__6B24EA82">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="IdUtilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__IdCre__6C190EBB">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="IdCreateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__IdDes__6D0D32F4">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="IdDestinataire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__IdTyp__6E01572D">
+    <End Role="TypeNotification" Type="Self.TypeNotification" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeNotification">
+        <PropertyRef Name="IdTypeNotification" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="IdTypeNotification" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdAcc__6EF57B66">
+    <End Role="Acces" Type="Self.Acces" Multiplicity="1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acces">
+        <PropertyRef Name="IdAcces" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="IdAcces" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdAva__6FE99F9F">
+    <End Role="Avatar" Type="Self.Avatar" Multiplicity="0..1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avatar">
+        <PropertyRef Name="IdAvatar" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="IdAvatar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdDis__71D1E811">
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
+    <End Role="UtilisateurDiscussion" Type="Self.UtilisateurDiscussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discussion">
+        <PropertyRef Name="IdDiscussion" />
+      </Principal>
+      <Dependent Role="UtilisateurDiscussion">
+        <PropertyRef Name="IdDiscussion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdNiv__72C60C4A">
+    <End Role="Niveau" Type="Self.Niveau" Multiplicity="1" />
+    <End Role="UtilisateurDiscussion" Type="Self.UtilisateurDiscussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Niveau">
+        <PropertyRef Name="IdNiveau" />
+      </Principal>
+      <Dependent Role="UtilisateurDiscussion">
+        <PropertyRef Name="IdNiveau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdSta__70DDC3D8">
+    <End Role="StatutUtilisateur" Type="Self.StatutUtilisateur" Multiplicity="0..1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatutUtilisateur">
+        <PropertyRef Name="IdStatutUtilisateur" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="IdStatutUtilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Utilisate__IdUti__73BA3083">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="UtilisateurDiscussion" Type="Self.UtilisateurDiscussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="IdUtilisateur" />
+      </Principal>
+      <Dependent Role="UtilisateurDiscussion">
+        <PropertyRef Name="IdUtilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Chat2Model1StoreContainer">
+    <EntitySet Name="Acces" EntityType="Self.Acces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discussion" EntityType="Self.Discussion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Niveau" EntityType="Self.Niveau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatutDiscussion" EntityType="Self.StatutDiscussion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatutUtilisateur" EntityType="Self.StatutUtilisateur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ton" EntityType="Self.Ton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeDiscussion" EntityType="Self.TypeDiscussion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeNotification" EntityType="Self.TypeNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UtilisateurDiscussion" EntityType="Self.UtilisateurDiscussion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Discussio__IdCre__656C112C" Association="Self.FK__Discussio__IdCre__656C112C">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Discussion" EntitySet="Discussion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Discussio__IdSta__66603565" Association="Self.FK__Discussio__IdSta__66603565">
+      <End Role="StatutDiscussion" EntitySet="StatutDiscussion" />
+      <End Role="Discussion" EntitySet="Discussion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Discussio__IdTyp__6754599E" Association="Self.FK__Discussio__IdTyp__6754599E">
+      <End Role="TypeDiscussion" EntitySet="TypeDiscussion" />
+      <End Role="Discussion" EntitySet="Discussion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Maintenan__IdUti__68487DD7" Association="Self.FK__Maintenan__IdUti__68487DD7">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Maintenance" EntitySet="Maintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__IdDiscu__693CA210" Association="Self.FK__Message__IdDiscu__693CA210">
+      <End Role="Discussion" EntitySet="Discussion" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__IdTon__6A30C649" Association="Self.FK__Message__IdTon__6A30C649">
+      <End Role="Ton" EntitySet="Ton" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__IdUtili__6B24EA82" Association="Self.FK__Message__IdUtili__6B24EA82">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__IdCre__6C190EBB" Association="Self.FK__Notificat__IdCre__6C190EBB">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__IdDes__6D0D32F4" Association="Self.FK__Notificat__IdDes__6D0D32F4">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__IdTyp__6E01572D" Association="Self.FK__Notificat__IdTyp__6E01572D">
+      <End Role="TypeNotification" EntitySet="TypeNotification" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdAcc__6EF57B66" Association="Self.FK__Utilisate__IdAcc__6EF57B66">
+      <End Role="Acces" EntitySet="Acces" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdAva__6FE99F9F" Association="Self.FK__Utilisate__IdAva__6FE99F9F">
+      <End Role="Avatar" EntitySet="Avatar" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdDis__71D1E811" Association="Self.FK__Utilisate__IdDis__71D1E811">
+      <End Role="Discussion" EntitySet="Discussion" />
+      <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdNiv__72C60C4A" Association="Self.FK__Utilisate__IdNiv__72C60C4A">
+      <End Role="Niveau" EntitySet="Niveau" />
+      <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdSta__70DDC3D8" Association="Self.FK__Utilisate__IdSta__70DDC3D8">
+      <End Role="StatutUtilisateur" EntitySet="StatutUtilisateur" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Utilisate__IdUti__73BA3083" Association="Self.FK__Utilisate__IdUti__73BA3083">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

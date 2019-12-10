@@ -15,7 +15,7 @@ namespace ApiChat3.Controllers
 {
     public class StatutUtilisateursController : ApiController
     {
-        private Chat2Entities db = new Chat2Entities();
+        private Chat2Entities1 db = new Chat2Entities1();
 
         // GET: api/StatutUtilisateurs
         public IQueryable<StatutUtilisateur> GetStatutUtilisateur()
