@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Chat2Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Chat2Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Acces">
     <Key>
       <PropertyRef Name="IdAcces" />
@@ -20,7 +20,7 @@
       <PropertyRef Name="IdDiscussion" />
     </Key>
     <Property Name="IdDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TitreDiscussion" Type="varchar(max)" />
+    <Property Name="TitreDiscussion" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="DateCreationDiscussion" Type="datetime" Nullable="false" />
     <Property Name="DescriptionDiscussion" Type="text" />
     <Property Name="StatutDiscussion" Type="tinyint" />
@@ -139,10 +139,8 @@
     <Property Name="IdDiscussion" Type="int" Nullable="false" />
     <Property Name="IdNiveau" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Discussio__IdCre__01142BA1">
-    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Discussio__IdCre__656C112C">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
     <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Utilisateur">
@@ -153,10 +151,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Discussio__IdSta__02084FDA">
-    <End Role="StatutDiscussion" Type="Self.StatutDiscussion" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Discussio__IdSta__66603565">
+    <End Role="StatutDiscussion" Type="Self.StatutDiscussion" Multiplicity="1" />
     <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="StatutDiscussion">
@@ -167,10 +163,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Discussio__IdTyp__02FC7413">
-    <End Role="TypeDiscussion" Type="Self.TypeDiscussion" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Discussio__IdTyp__6754599E">
+    <End Role="TypeDiscussion" Type="Self.TypeDiscussion" Multiplicity="1" />
     <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypeDiscussion">
@@ -181,10 +175,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Maintenan__IdUti__14270015">
-    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Maintenan__IdUti__68487DD7">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
     <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Utilisateur">
@@ -195,10 +187,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Message__IdDiscu__3A4CA8FD">
-    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Message__IdDiscu__693CA210">
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
     <End Role="Message" Type="Self.Message" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Discussion">
@@ -209,10 +199,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Message__IdTon__3B40CD36">
-    <End Role="Ton" Type="Self.Ton" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Message__IdTon__6A30C649">
+    <End Role="Ton" Type="Self.Ton" Multiplicity="1" />
     <End Role="Message" Type="Self.Message" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ton">
@@ -295,10 +283,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Utilisate__IdDis__607251E5">
-    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK__Utilisate__IdDis__71D1E811">
+    <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
     <End Role="UtilisateurDiscussion" Type="Self.UtilisateurDiscussion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Discussion">
@@ -345,7 +331,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Chat2Model1StoreContainer">
+  <EntityContainer Name="Chat2Model2StoreContainer">
     <EntitySet Name="Acces" EntityType="Self.Acces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discussion" EntityType="Self.Discussion" Schema="dbo" store:Type="Tables" />
@@ -361,27 +347,27 @@
     <EntitySet Name="TypeNotification" EntityType="Self.TypeNotification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UtilisateurDiscussion" EntityType="Self.UtilisateurDiscussion" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Discussio__IdCre__01142BA1" Association="Self.FK__Discussio__IdCre__01142BA1">
+    <AssociationSet Name="FK__Discussio__IdCre__656C112C" Association="Self.FK__Discussio__IdCre__656C112C">
       <End Role="Utilisateur" EntitySet="Utilisateur" />
       <End Role="Discussion" EntitySet="Discussion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Discussio__IdSta__02084FDA" Association="Self.FK__Discussio__IdSta__02084FDA">
+    <AssociationSet Name="FK__Discussio__IdSta__66603565" Association="Self.FK__Discussio__IdSta__66603565">
       <End Role="StatutDiscussion" EntitySet="StatutDiscussion" />
       <End Role="Discussion" EntitySet="Discussion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Discussio__IdTyp__02FC7413" Association="Self.FK__Discussio__IdTyp__02FC7413">
+    <AssociationSet Name="FK__Discussio__IdTyp__6754599E" Association="Self.FK__Discussio__IdTyp__6754599E">
       <End Role="TypeDiscussion" EntitySet="TypeDiscussion" />
       <End Role="Discussion" EntitySet="Discussion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Maintenan__IdUti__14270015" Association="Self.FK__Maintenan__IdUti__14270015">
+    <AssociationSet Name="FK__Maintenan__IdUti__68487DD7" Association="Self.FK__Maintenan__IdUti__68487DD7">
       <End Role="Utilisateur" EntitySet="Utilisateur" />
       <End Role="Maintenance" EntitySet="Maintenance" />
     </AssociationSet>
-    <AssociationSet Name="FK__Message__IdDiscu__3A4CA8FD" Association="Self.FK__Message__IdDiscu__3A4CA8FD">
+    <AssociationSet Name="FK__Message__IdDiscu__693CA210" Association="Self.FK__Message__IdDiscu__693CA210">
       <End Role="Discussion" EntitySet="Discussion" />
       <End Role="Message" EntitySet="Message" />
     </AssociationSet>
-    <AssociationSet Name="FK__Message__IdTon__3B40CD36" Association="Self.FK__Message__IdTon__3B40CD36">
+    <AssociationSet Name="FK__Message__IdTon__6A30C649" Association="Self.FK__Message__IdTon__6A30C649">
       <End Role="Ton" EntitySet="Ton" />
       <End Role="Message" EntitySet="Message" />
     </AssociationSet>
@@ -409,7 +395,7 @@
       <End Role="Avatar" EntitySet="Avatar" />
       <End Role="Utilisateur" EntitySet="Utilisateur" />
     </AssociationSet>
-    <AssociationSet Name="FK__Utilisate__IdDis__607251E5" Association="Self.FK__Utilisate__IdDis__607251E5">
+    <AssociationSet Name="FK__Utilisate__IdDis__71D1E811" Association="Self.FK__Utilisate__IdDis__71D1E811">
       <End Role="Discussion" EntitySet="Discussion" />
       <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
     </AssociationSet>

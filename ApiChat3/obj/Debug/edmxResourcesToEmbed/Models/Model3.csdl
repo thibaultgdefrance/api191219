@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Chat2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Chat2Model2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Acces">
     <Key>
       <PropertyRef Name="IdAcces" />
@@ -22,7 +22,7 @@
       <PropertyRef Name="IdDiscussion" />
     </Key>
     <Property Name="IdDiscussion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TitreDiscussion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TitreDiscussion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DateCreationDiscussion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DescriptionDiscussion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="StatutDiscussion" Type="Byte" />
@@ -87,10 +87,10 @@
     <Property Name="IdDestinataire" Type="Int32" Nullable="false" />
     <Property Name="IdDiscussion" Type="Int32" />
     <Property Name="IdTypeNotification" Type="Int32" Nullable="false" />
+    <Property Name="TokenNotification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Notificat__IdCre__6C190EBB" FromRole="Notification" ToRole="Utilisateur" />
     <NavigationProperty Name="Utilisateur1" Relationship="Self.FK__Notificat__IdDes__6D0D32F4" FromRole="Notification" ToRole="Utilisateur" />
     <NavigationProperty Name="TypeNotification" Relationship="Self.FK__Notificat__IdTyp__6E01572D" FromRole="Notification" ToRole="TypeNotification" />
-    <Property Name="TokenNotification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="StatutDiscussion">
     <Key>
@@ -363,7 +363,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Chat2Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Chat2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Acces" EntityType="Self.Acces" />
     <EntitySet Name="Avatar" EntityType="Self.Avatar" />
     <EntitySet Name="Discussion" EntityType="Self.Discussion" />

@@ -14,7 +14,7 @@ namespace ApiChat3.Models
         public string EmailUtilisateur { get; set; }
         public Nullable<int> IdAvatar { get; set; }
         public int IdAcces { get; set; }
-        
+        public bool Verif { get; set; }
        
     }
 }

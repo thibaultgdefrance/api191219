@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Chat2Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Chat2Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Acces">
           <Key>
             <PropertyRef Name="IdAcces" />
@@ -25,7 +25,7 @@
             <PropertyRef Name="IdDiscussion" />
           </Key>
           <Property Name="IdDiscussion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TitreDiscussion" Type="varchar(max)" />
+          <Property Name="TitreDiscussion" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="DateCreationDiscussion" Type="datetime" Nullable="false" />
           <Property Name="DescriptionDiscussion" Type="text" />
           <Property Name="StatutDiscussion" Type="tinyint" />
@@ -144,10 +144,8 @@
           <Property Name="IdDiscussion" Type="int" Nullable="false" />
           <Property Name="IdNiveau" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Discussio__IdCre__01142BA1">
-          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Discussio__IdCre__656C112C">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="0..1" />
           <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Utilisateur">
@@ -158,10 +156,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Discussio__IdSta__02084FDA">
-          <End Role="StatutDiscussion" Type="Self.StatutDiscussion" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Discussio__IdSta__66603565">
+          <End Role="StatutDiscussion" Type="Self.StatutDiscussion" Multiplicity="1" />
           <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StatutDiscussion">
@@ -172,10 +168,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Discussio__IdTyp__02FC7413">
-          <End Role="TypeDiscussion" Type="Self.TypeDiscussion" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Discussio__IdTyp__6754599E">
+          <End Role="TypeDiscussion" Type="Self.TypeDiscussion" Multiplicity="1" />
           <End Role="Discussion" Type="Self.Discussion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeDiscussion">
@@ -186,10 +180,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Maintenan__IdUti__14270015">
-          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Maintenan__IdUti__68487DD7">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
           <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Utilisateur">
@@ -200,10 +192,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Message__IdDiscu__3A4CA8FD">
-          <End Role="Discussion" Type="Self.Discussion" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Message__IdDiscu__693CA210">
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Discussion">
@@ -214,10 +204,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Message__IdTon__3B40CD36">
-          <End Role="Ton" Type="Self.Ton" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Message__IdTon__6A30C649">
+          <End Role="Ton" Type="Self.Ton" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ton">
@@ -300,10 +288,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Utilisate__IdDis__607251E5">
-          <End Role="Discussion" Type="Self.Discussion" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Utilisate__IdDis__71D1E811">
+          <End Role="Discussion" Type="Self.Discussion" Multiplicity="1" />
           <End Role="UtilisateurDiscussion" Type="Self.UtilisateurDiscussion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Discussion">
@@ -350,7 +336,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Chat2Model1StoreContainer">
+        <EntityContainer Name="Chat2Model2StoreContainer">
           <EntitySet Name="Acces" EntityType="Self.Acces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Avatar" EntityType="Self.Avatar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discussion" EntityType="Self.Discussion" Schema="dbo" store:Type="Tables" />
@@ -366,27 +352,27 @@
           <EntitySet Name="TypeNotification" EntityType="Self.TypeNotification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UtilisateurDiscussion" EntityType="Self.UtilisateurDiscussion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Discussio__IdCre__01142BA1" Association="Self.FK__Discussio__IdCre__01142BA1">
+          <AssociationSet Name="FK__Discussio__IdCre__656C112C" Association="Self.FK__Discussio__IdCre__656C112C">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Discussion" EntitySet="Discussion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Discussio__IdSta__02084FDA" Association="Self.FK__Discussio__IdSta__02084FDA">
+          <AssociationSet Name="FK__Discussio__IdSta__66603565" Association="Self.FK__Discussio__IdSta__66603565">
             <End Role="StatutDiscussion" EntitySet="StatutDiscussion" />
             <End Role="Discussion" EntitySet="Discussion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Discussio__IdTyp__02FC7413" Association="Self.FK__Discussio__IdTyp__02FC7413">
+          <AssociationSet Name="FK__Discussio__IdTyp__6754599E" Association="Self.FK__Discussio__IdTyp__6754599E">
             <End Role="TypeDiscussion" EntitySet="TypeDiscussion" />
             <End Role="Discussion" EntitySet="Discussion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Maintenan__IdUti__14270015" Association="Self.FK__Maintenan__IdUti__14270015">
+          <AssociationSet Name="FK__Maintenan__IdUti__68487DD7" Association="Self.FK__Maintenan__IdUti__68487DD7">
             <End Role="Utilisateur" EntitySet="Utilisateur" />
             <End Role="Maintenance" EntitySet="Maintenance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Message__IdDiscu__3A4CA8FD" Association="Self.FK__Message__IdDiscu__3A4CA8FD">
+          <AssociationSet Name="FK__Message__IdDiscu__693CA210" Association="Self.FK__Message__IdDiscu__693CA210">
             <End Role="Discussion" EntitySet="Discussion" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
-          <AssociationSet Name="FK__Message__IdTon__3B40CD36" Association="Self.FK__Message__IdTon__3B40CD36">
+          <AssociationSet Name="FK__Message__IdTon__6A30C649" Association="Self.FK__Message__IdTon__6A30C649">
             <End Role="Ton" EntitySet="Ton" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
@@ -414,7 +400,7 @@
             <End Role="Avatar" EntitySet="Avatar" />
             <End Role="Utilisateur" EntitySet="Utilisateur" />
           </AssociationSet>
-          <AssociationSet Name="FK__Utilisate__IdDis__607251E5" Association="Self.FK__Utilisate__IdDis__607251E5">
+          <AssociationSet Name="FK__Utilisate__IdDis__71D1E811" Association="Self.FK__Utilisate__IdDis__71D1E811">
             <End Role="Discussion" EntitySet="Discussion" />
             <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
           </AssociationSet>
@@ -431,10 +417,11 @@
             <End Role="UtilisateurDiscussion" EntitySet="UtilisateurDiscussion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Chat2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Chat2Model2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Acces">
           <Key>
             <PropertyRef Name="IdAcces" />
@@ -457,7 +444,7 @@
             <PropertyRef Name="IdDiscussion" />
           </Key>
           <Property Name="IdDiscussion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TitreDiscussion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TitreDiscussion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateCreationDiscussion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DescriptionDiscussion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StatutDiscussion" Type="Byte" />
@@ -522,10 +509,10 @@
           <Property Name="IdDestinataire" Type="Int32" Nullable="false" />
           <Property Name="IdDiscussion" Type="Int32" />
           <Property Name="IdTypeNotification" Type="Int32" Nullable="false" />
+          <Property Name="TokenNotification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Notificat__IdCre__6C190EBB" FromRole="Notification" ToRole="Utilisateur" />
           <NavigationProperty Name="Utilisateur1" Relationship="Self.FK__Notificat__IdDes__6D0D32F4" FromRole="Notification" ToRole="Utilisateur" />
           <NavigationProperty Name="TypeNotification" Relationship="Self.FK__Notificat__IdTyp__6E01572D" FromRole="Notification" ToRole="TypeNotification" />
-          <Property Name="TokenNotification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StatutDiscussion">
           <Key>
@@ -798,7 +785,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Chat2Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Chat2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Acces" EntityType="Self.Acces" />
           <EntitySet Name="Avatar" EntityType="Self.Avatar" />
           <EntitySet Name="Discussion" EntityType="Self.Discussion" />
@@ -884,9 +871,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Chat2Model1StoreContainer" CdmEntityContainer="Chat2Entities1">
+        <EntityContainerMapping StorageEntityContainer="Chat2Model2StoreContainer" CdmEntityContainer="Chat2Entities">
           <EntitySetMapping Name="Acces">
-            <EntityTypeMapping TypeName="Chat2Model1.Acces">
+            <EntityTypeMapping TypeName="Chat2Model2.Acces">
               <MappingFragment StoreEntitySet="Acces">
                 <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
                 <ScalarProperty Name="LibelleAcces" ColumnName="LibelleAcces" />
@@ -895,7 +882,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Avatar">
-            <EntityTypeMapping TypeName="Chat2Model1.Avatar">
+            <EntityTypeMapping TypeName="Chat2Model2.Avatar">
               <MappingFragment StoreEntitySet="Avatar">
                 <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
                 <ScalarProperty Name="CheminAvatar" ColumnName="CheminAvatar" />
@@ -903,7 +890,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Discussion">
-            <EntityTypeMapping TypeName="Chat2Model1.Discussion">
+            <EntityTypeMapping TypeName="Chat2Model2.Discussion">
               <MappingFragment StoreEntitySet="Discussion">
                 <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
                 <ScalarProperty Name="TitreDiscussion" ColumnName="TitreDiscussion" />
@@ -918,7 +905,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Image">
-            <EntityTypeMapping TypeName="Chat2Model1.Image">
+            <EntityTypeMapping TypeName="Chat2Model2.Image">
               <MappingFragment StoreEntitySet="Image">
                 <ScalarProperty Name="IdImage" ColumnName="IdImage" />
                 <ScalarProperty Name="NomImage" ColumnName="NomImage" />
@@ -927,7 +914,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Maintenance">
-            <EntityTypeMapping TypeName="Chat2Model1.Maintenance">
+            <EntityTypeMapping TypeName="Chat2Model2.Maintenance">
               <MappingFragment StoreEntitySet="Maintenance">
                 <ScalarProperty Name="IdMaintenance" ColumnName="IdMaintenance" />
                 <ScalarProperty Name="DescriptionMaintenance" ColumnName="DescriptionMaintenance" />
@@ -936,7 +923,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Message">
-            <EntityTypeMapping TypeName="Chat2Model1.Message">
+            <EntityTypeMapping TypeName="Chat2Model2.Message">
               <MappingFragment StoreEntitySet="Message">
                 <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
@@ -949,7 +936,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Niveau">
-            <EntityTypeMapping TypeName="Chat2Model1.Niveau">
+            <EntityTypeMapping TypeName="Chat2Model2.Niveau">
               <MappingFragment StoreEntitySet="Niveau">
                 <ScalarProperty Name="IdNiveau" ColumnName="IdNiveau" />
                 <ScalarProperty Name="LibelleNiveau" ColumnName="LibelleNiveau" />
@@ -957,9 +944,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notification">
-            <EntityTypeMapping TypeName="Chat2Model1.Notification">
+            <EntityTypeMapping TypeName="Chat2Model2.Notification">
               <MappingFragment StoreEntitySet="Notification">
-                <ScalarProperty Name="TokenNotification" ColumnName="TokenNotification" />
                 <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
                 <ScalarProperty Name="TexteNotification" ColumnName="TexteNotification" />
                 <ScalarProperty Name="StatutNotification" ColumnName="StatutNotification" />
@@ -967,11 +953,12 @@
                 <ScalarProperty Name="IdDestinataire" ColumnName="IdDestinataire" />
                 <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
                 <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
+                <ScalarProperty Name="TokenNotification" ColumnName="TokenNotification" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatutDiscussion">
-            <EntityTypeMapping TypeName="Chat2Model1.StatutDiscussion">
+            <EntityTypeMapping TypeName="Chat2Model2.StatutDiscussion">
               <MappingFragment StoreEntitySet="StatutDiscussion">
                 <ScalarProperty Name="IdStatutDiscussion" ColumnName="IdStatutDiscussion" />
                 <ScalarProperty Name="LibelleStatutDiscussion" ColumnName="LibelleStatutDiscussion" />
@@ -979,7 +966,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatutUtilisateur">
-            <EntityTypeMapping TypeName="Chat2Model1.StatutUtilisateur">
+            <EntityTypeMapping TypeName="Chat2Model2.StatutUtilisateur">
               <MappingFragment StoreEntitySet="StatutUtilisateur">
                 <ScalarProperty Name="IdStatutUtilisateur" ColumnName="IdStatutUtilisateur" />
                 <ScalarProperty Name="LibelleStatutUtilisateur" ColumnName="LibelleStatutUtilisateur" />
@@ -987,7 +974,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ton">
-            <EntityTypeMapping TypeName="Chat2Model1.Ton">
+            <EntityTypeMapping TypeName="Chat2Model2.Ton">
               <MappingFragment StoreEntitySet="Ton">
                 <ScalarProperty Name="IdTon" ColumnName="IdTon" />
                 <ScalarProperty Name="LibelleTon" ColumnName="LibelleTon" />
@@ -995,7 +982,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeDiscussion">
-            <EntityTypeMapping TypeName="Chat2Model1.TypeDiscussion">
+            <EntityTypeMapping TypeName="Chat2Model2.TypeDiscussion">
               <MappingFragment StoreEntitySet="TypeDiscussion">
                 <ScalarProperty Name="IdTypeDiscussion" ColumnName="IdTypeDiscussion" />
                 <ScalarProperty Name="LibelleTypeDiscussion" ColumnName="LibelleTypeDiscussion" />
@@ -1003,7 +990,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeNotification">
-            <EntityTypeMapping TypeName="Chat2Model1.TypeNotification">
+            <EntityTypeMapping TypeName="Chat2Model2.TypeNotification">
               <MappingFragment StoreEntitySet="TypeNotification">
                 <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
                 <ScalarProperty Name="LibelleTypeNotification" ColumnName="LibelleTypeNotification" />
@@ -1011,7 +998,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Utilisateur">
-            <EntityTypeMapping TypeName="Chat2Model1.Utilisateur">
+            <EntityTypeMapping TypeName="Chat2Model2.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
                 <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
@@ -1030,7 +1017,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UtilisateurDiscussion">
-            <EntityTypeMapping TypeName="Chat2Model1.UtilisateurDiscussion">
+            <EntityTypeMapping TypeName="Chat2Model2.UtilisateurDiscussion">
               <MappingFragment StoreEntitySet="UtilisateurDiscussion">
                 <ScalarProperty Name="IdUtilisateurDiscussion" ColumnName="IdUtilisateurDiscussion" />
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,29 @@ namespace ApiChat3.Controllers
         {
             return db.Utilisateur;
         }
+        [HttpGet]
+        public List<Participant> rechercheUtilisateur(string entree)
+        {
+            List<Utilisateur> utilisateurs = (from u in db.Utilisateur where u.PseudoUtilisateur.Contains(entree) select u).ToList();
+            //List<Utilisateur> utilisateurs = (from u in db.Utilisateur where u.PseudoUtilisateur.StartsWith(entree) select u).ToList();
+            List<Participant> participants = new List<Participant>();
+            foreach (var item in utilisateurs)
+            {
+                Participant participant = new Participant();
+                participant.EmailUtilisateur = item.EmailUtilisateur;
+                participant.NomUtilisateur = item.NomUtilisateur;
+                participant.PseudoUtilisateur = item.PseudoUtilisateur;
+                participant.IdAcces = item.IdAcces;
+                participant.IdAvatar = item.IdAvatar;
+                participant.Verif = false;
+                participants.Add(participant);
+            }
+            //List<Utilisateur> utilisateurs = (from u in db.Utilisateur where Like (u.PseudoUtilisateur,entree) select u).ToList();
+            return participants;
+        }
+
+
+
 
         // GET: api/Utilisateurs/5
         [ResponseType(typeof(Utilisateur))]
@@ -119,22 +143,42 @@ namespace ApiChat3.Controllers
 
         public List<Participant> getDiscussionParticipant(string tokenDiscussion, string tokenUtilisateur)
         {
-            Discussion discussion = (from d in db.Discussion where d.TokenDiscussion == tokenDiscussion select d).First();
-            List<Utilisateur> utilisateurs = (from u in db.Utilisateur join ud in db.UtilisateurDiscussion on u.IdUtilisateur equals ud.IdUtilisateur where ud.IdDiscussion == discussion.IdDiscussion select u).ToList(); ;
-            List<Participant> participants = new List<Participant>();
-            foreach (var item in utilisateurs)
+            try
             {
-                Participant participant = new Participant();
-                participant.NomUtilisateur = item.NomUtilisateur;
-                participant.PrenomUtilisateur = item.PrenomUtilisateur;
-                participant.PseudoUtilisateur = item.PseudoUtilisateur;
-                participant.EmailUtilisateur = item.EmailUtilisateur;
-                participant.IdAcces = item.IdAcces;
-                participant.IdAvatar = item.IdAvatar;
-                participants.Add(participant);
-                
+                Discussion discussion = (from d in db.Discussion where d.TokenDiscussion == tokenDiscussion select d).First();
+                List<Utilisateur> utilisateurs = (from u in db.Utilisateur join ud in db.UtilisateurDiscussion on u.IdUtilisateur equals ud.IdUtilisateur where ud.IdDiscussion == discussion.IdDiscussion select u).ToList(); ;
+                List<Participant> participants = new List<Participant>();
+                Utilisateur utilisateur1 = (from u in db.Utilisateur where u.TokenUtilisateur == tokenUtilisateur select u).First();
+                foreach (var item in utilisateurs)
+                {
+                    Participant participant = new Participant();
+                    participant.NomUtilisateur = item.NomUtilisateur;
+                    participant.PrenomUtilisateur = item.PrenomUtilisateur;
+                    participant.PseudoUtilisateur = item.PseudoUtilisateur;
+                    participant.EmailUtilisateur = item.EmailUtilisateur;
+                    participant.IdAcces = item.IdAcces;
+                    participant.IdAvatar = item.IdAvatar;
+                    if (discussion.IdCreateur== utilisateur1.IdUtilisateur)
+                    {
+                        participant.Verif = true;
+                    }
+                    else
+                    {
+                        participant.Verif = false;
+                    }
+                    participants.Add(participant);
+
+                }
+                return participants;
             }
-            return participants;
+            catch (Exception)
+            {
+
+                return null;
+            }
+           
         }
+
+        
     }
 }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Chat2Model1StoreContainer" CdmEntityContainer="Chat2Entities1">
+  <EntityContainerMapping StorageEntityContainer="Chat2Model2StoreContainer" CdmEntityContainer="Chat2Entities">
     <EntitySetMapping Name="Acces">
-      <EntityTypeMapping TypeName="Chat2Model1.Acces">
+      <EntityTypeMapping TypeName="Chat2Model2.Acces">
         <MappingFragment StoreEntitySet="Acces">
           <ScalarProperty Name="IdAcces" ColumnName="IdAcces" />
           <ScalarProperty Name="LibelleAcces" ColumnName="LibelleAcces" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Avatar">
-      <EntityTypeMapping TypeName="Chat2Model1.Avatar">
+      <EntityTypeMapping TypeName="Chat2Model2.Avatar">
         <MappingFragment StoreEntitySet="Avatar">
           <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
           <ScalarProperty Name="CheminAvatar" ColumnName="CheminAvatar" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Discussion">
-      <EntityTypeMapping TypeName="Chat2Model1.Discussion">
+      <EntityTypeMapping TypeName="Chat2Model2.Discussion">
         <MappingFragment StoreEntitySet="Discussion">
           <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
           <ScalarProperty Name="TitreDiscussion" ColumnName="TitreDiscussion" />
@@ -34,7 +34,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Image">
-      <EntityTypeMapping TypeName="Chat2Model1.Image">
+      <EntityTypeMapping TypeName="Chat2Model2.Image">
         <MappingFragment StoreEntitySet="Image">
           <ScalarProperty Name="IdImage" ColumnName="IdImage" />
           <ScalarProperty Name="NomImage" ColumnName="NomImage" />
@@ -43,7 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Maintenance">
-      <EntityTypeMapping TypeName="Chat2Model1.Maintenance">
+      <EntityTypeMapping TypeName="Chat2Model2.Maintenance">
         <MappingFragment StoreEntitySet="Maintenance">
           <ScalarProperty Name="IdMaintenance" ColumnName="IdMaintenance" />
           <ScalarProperty Name="DescriptionMaintenance" ColumnName="DescriptionMaintenance" />
@@ -52,7 +52,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Message">
-      <EntityTypeMapping TypeName="Chat2Model1.Message">
+      <EntityTypeMapping TypeName="Chat2Model2.Message">
         <MappingFragment StoreEntitySet="Message">
           <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
           <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
@@ -65,7 +65,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Niveau">
-      <EntityTypeMapping TypeName="Chat2Model1.Niveau">
+      <EntityTypeMapping TypeName="Chat2Model2.Niveau">
         <MappingFragment StoreEntitySet="Niveau">
           <ScalarProperty Name="IdNiveau" ColumnName="IdNiveau" />
           <ScalarProperty Name="LibelleNiveau" ColumnName="LibelleNiveau" />
@@ -73,9 +73,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Notification">
-      <EntityTypeMapping TypeName="Chat2Model1.Notification">
+      <EntityTypeMapping TypeName="Chat2Model2.Notification">
         <MappingFragment StoreEntitySet="Notification">
-          <ScalarProperty Name="TokenNotification" ColumnName="TokenNotification" />
           <ScalarProperty Name="IdNotification" ColumnName="IdNotification" />
           <ScalarProperty Name="TexteNotification" ColumnName="TexteNotification" />
           <ScalarProperty Name="StatutNotification" ColumnName="StatutNotification" />
@@ -83,11 +82,12 @@
           <ScalarProperty Name="IdDestinataire" ColumnName="IdDestinataire" />
           <ScalarProperty Name="IdDiscussion" ColumnName="IdDiscussion" />
           <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
+          <ScalarProperty Name="TokenNotification" ColumnName="TokenNotification" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StatutDiscussion">
-      <EntityTypeMapping TypeName="Chat2Model1.StatutDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model2.StatutDiscussion">
         <MappingFragment StoreEntitySet="StatutDiscussion">
           <ScalarProperty Name="IdStatutDiscussion" ColumnName="IdStatutDiscussion" />
           <ScalarProperty Name="LibelleStatutDiscussion" ColumnName="LibelleStatutDiscussion" />
@@ -95,7 +95,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StatutUtilisateur">
-      <EntityTypeMapping TypeName="Chat2Model1.StatutUtilisateur">
+      <EntityTypeMapping TypeName="Chat2Model2.StatutUtilisateur">
         <MappingFragment StoreEntitySet="StatutUtilisateur">
           <ScalarProperty Name="IdStatutUtilisateur" ColumnName="IdStatutUtilisateur" />
           <ScalarProperty Name="LibelleStatutUtilisateur" ColumnName="LibelleStatutUtilisateur" />
@@ -103,7 +103,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ton">
-      <EntityTypeMapping TypeName="Chat2Model1.Ton">
+      <EntityTypeMapping TypeName="Chat2Model2.Ton">
         <MappingFragment StoreEntitySet="Ton">
           <ScalarProperty Name="IdTon" ColumnName="IdTon" />
           <ScalarProperty Name="LibelleTon" ColumnName="LibelleTon" />
@@ -111,7 +111,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeDiscussion">
-      <EntityTypeMapping TypeName="Chat2Model1.TypeDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model2.TypeDiscussion">
         <MappingFragment StoreEntitySet="TypeDiscussion">
           <ScalarProperty Name="IdTypeDiscussion" ColumnName="IdTypeDiscussion" />
           <ScalarProperty Name="LibelleTypeDiscussion" ColumnName="LibelleTypeDiscussion" />
@@ -119,7 +119,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeNotification">
-      <EntityTypeMapping TypeName="Chat2Model1.TypeNotification">
+      <EntityTypeMapping TypeName="Chat2Model2.TypeNotification">
         <MappingFragment StoreEntitySet="TypeNotification">
           <ScalarProperty Name="IdTypeNotification" ColumnName="IdTypeNotification" />
           <ScalarProperty Name="LibelleTypeNotification" ColumnName="LibelleTypeNotification" />
@@ -127,7 +127,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Utilisateur">
-      <EntityTypeMapping TypeName="Chat2Model1.Utilisateur">
+      <EntityTypeMapping TypeName="Chat2Model2.Utilisateur">
         <MappingFragment StoreEntitySet="Utilisateur">
           <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
           <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
@@ -146,7 +146,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UtilisateurDiscussion">
-      <EntityTypeMapping TypeName="Chat2Model1.UtilisateurDiscussion">
+      <EntityTypeMapping TypeName="Chat2Model2.UtilisateurDiscussion">
         <MappingFragment StoreEntitySet="UtilisateurDiscussion">
           <ScalarProperty Name="IdUtilisateurDiscussion" ColumnName="IdUtilisateurDiscussion" />
           <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />

@@ -22,6 +22,7 @@ namespace ApiChat3.Models
         public int IdDestinataire { get; set; }
         public Nullable<int> IdDiscussion { get; set; }
         public int IdTypeNotification { get; set; }
+        public string TokenNotification { get; set; }
         [JsonIgnore]
         public virtual Utilisateur Utilisateur { get; set; }
         [JsonIgnore]

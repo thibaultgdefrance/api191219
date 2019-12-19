@@ -160,7 +160,7 @@ namespace ApiChat3.Controllers
                     messageUtilisateur.DateEnvoi = item.DateEnvoi;
                     messageUtilisateur.TexteMessage = item.TexteMessage;
                     messageUtilisateur.IdDiscussion = item.IdDiscussion;
-                    if (messageUtilisateur.IdUtilisateur==utilisateur2.IdUtilisateur)
+                    if (item.IdUtilisateur==utilisateur2.IdUtilisateur)
                     {
                         messageUtilisateur.VerifMessage = true;
                     }

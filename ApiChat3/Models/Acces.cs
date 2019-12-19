@@ -24,8 +24,9 @@ namespace ApiChat3.Models
         public int IdAcces { get; set; }
         public string LibelleAcces { get; set; }
         public int ValeurAcces { get; set; }
-        [JsonIgnore]
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Utilisateur> Utilisateur { get; set; }
     }
 }
