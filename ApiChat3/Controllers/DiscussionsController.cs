@@ -135,6 +135,7 @@ namespace ApiChat3.Controllers
                 discussion.StatutDiscussion = 1;
                 discussion.IdCreateur = utilisateur1.IdUtilisateur;
                 discussion.TokenDiscussion = worflow.createToken();
+                int discussionExist = (from d in db.Discussion where d.TitreDiscussion == utilisateur1.EmailUtilisateur + "/" + utilisateur2.EmailUtilisateur || d.TitreDiscussion == utilisateur2.EmailUtilisateur + "/" + utilisateur1.EmailUtilisateur select d).Count();
                 int tokenExist = (from d in db.Discussion where d.TokenDiscussion == discussion.TokenDiscussion select d).Count();
 
                 if (tokenExist > 0)
@@ -147,6 +148,10 @@ namespace ApiChat3.Controllers
                     }
                 }
                 if (!ModelState.IsValid)
+                {
+                    return "ko";
+                }
+                else if (discussionExist>0)
                 {
                     return "ko";
                 }

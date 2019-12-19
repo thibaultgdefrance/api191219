@@ -94,4 +94,3 @@ C:\inetpub\wwwroot\ApiChat3\ApiChat3\obj\Debug\ApiChat3.csproj.CoreCompileInputs
 C:\inetpub\wwwroot\ApiChat3\ApiChat3\obj\Debug\ApiChat3.csproj.CopyComplete
 C:\inetpub\wwwroot\ApiChat3\ApiChat3\obj\Debug\ApiChat3.dll
 C:\inetpub\wwwroot\ApiChat3\ApiChat3\obj\Debug\ApiChat3.pdb
-C:\inetpub\wwwroot\ApiChat3\ApiChat3\obj\Debug\ApiChat3.csprojAssemblyReference.cache

@@ -98,13 +98,23 @@ namespace ApiChat3.Controllers
             UtilisateurDiscussion utilisateurDiscussion = new UtilisateurDiscussion();
             Utilisateur utilisateur = (from u in db.Utilisateur where u.TokenUtilisateur==utilisateurToken select u).First();
             Discussion discussion = (from d in db.Discussion join u in db.Utilisateur on d.IdCreateur equals u.IdUtilisateur where u.TokenUtilisateur==utilisateurToken orderby d.DateCreationDiscussion descending select d).First();
-            utilisateurDiscussion.IdUtilisateur = utilisateur.IdUtilisateur;
-            utilisateurDiscussion.IdDiscussion = discussion.IdDiscussion;
-            utilisateurDiscussion.IdNiveau = 1;
-            db.UtilisateurDiscussion.Add(utilisateurDiscussion);
-            await db.SaveChangesAsync();
+            int existUtilisateurDiscussion = (from ud in db.UtilisateurDiscussion where ud.IdUtilisateur == utilisateur.IdUtilisateur && ud.IdDiscussion == discussion.IdDiscussion select ud).Count();
+            if (existUtilisateurDiscussion > 0)
+            {
+                return null;
+            }
+            else
+            {
+                utilisateurDiscussion.IdUtilisateur = utilisateur.IdUtilisateur;
+                utilisateurDiscussion.IdDiscussion = discussion.IdDiscussion;
+                utilisateurDiscussion.IdNiveau = 1;
 
-            return CreatedAtRoute("DefaultApi", new { id = utilisateurDiscussion.IdUtilisateurDiscussion }, utilisateurDiscussion);
+                db.UtilisateurDiscussion.Add(utilisateurDiscussion);
+                await db.SaveChangesAsync();
+
+                return CreatedAtRoute("DefaultApi", new { id = utilisateurDiscussion.IdUtilisateurDiscussion }, utilisateurDiscussion);
+            }
+           
         }
 
         public async Task<IHttpActionResult> ajouterUtilisateurDiscussionToken(string utilisateurToken,string tokenNotif)
@@ -118,13 +128,22 @@ namespace ApiChat3.Controllers
             Utilisateur utilisateur = (from u in db.Utilisateur where u.TokenUtilisateur == utilisateurToken select u).First();
             Notification notification = (from n in db.Notification where n.TokenNotification == tokenNotif select n).First();
             Discussion discussion = (from d in db.Discussion where d.IdDiscussion==notification.IdDiscussion select d).First();
-            utilisateurDiscussion.IdUtilisateur = utilisateur.IdUtilisateur;
-            utilisateurDiscussion.IdDiscussion = discussion.IdDiscussion;
-            utilisateurDiscussion.IdNiveau = 3;
-            db.UtilisateurDiscussion.Add(utilisateurDiscussion);
-            await db.SaveChangesAsync();
+            int existUtilisateurDiscussion = (from ud in db.UtilisateurDiscussion where ud.IdUtilisateur == utilisateur.IdUtilisateur && ud.IdDiscussion == discussion.IdDiscussion select ud).Count();
+            if (existUtilisateurDiscussion>0)
+            {
+                return null;
+            }
+            else
+            {
+                utilisateurDiscussion.IdUtilisateur = utilisateur.IdUtilisateur;
+                utilisateurDiscussion.IdDiscussion = discussion.IdDiscussion;
+                utilisateurDiscussion.IdNiveau = 3;
+                db.UtilisateurDiscussion.Add(utilisateurDiscussion);
+                await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = utilisateurDiscussion.IdUtilisateurDiscussion }, utilisateurDiscussion);
+                return CreatedAtRoute("DefaultApi", new { id = utilisateurDiscussion.IdUtilisateurDiscussion }, utilisateurDiscussion);
+            }
+            
         }
         public async Task<string> postDiscussionContact(string utilisateurToken, string tokenNotif,int contact)
         {
